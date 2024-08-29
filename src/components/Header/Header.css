@@ -1,0 +1,39 @@
+.header {
+  padding: 30px 0 24px;
+}
+
+.header-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-logo {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-decoration: none;
+  & span {
+    line-height: 28px;
+    font-size: 24px;
+    font-weight: 700;
+    margin-left: 6px;
+    color: rgb(10, 20, 58);
+  }
+}
+
+.header-burger {
+  width: 30px;
+  height: 19px;
+  display: none;
+}
+
+@media (max-width: 786px) {
+  .header-controls {
+    display: none;
+  }
+
+  .header-burger {
+    display: block;
+  }
+}
