@@ -12,13 +12,16 @@ export const Layout = () => {
   };
 
   const handleSearchArray = () => {
-    setProducts(cardArray)
+    setProducts(
+      cardArray.filter(
+        (p) => p.title.includes(searchText) || p.price.includes(searchText)
+      )
+    );
   };
 
   useEffect(() => {
-    setProducts(cardArray)
-  }, [])
-
+    setProducts(cardArray);
+  }, []);
 
   return (
     <>
@@ -33,7 +36,10 @@ export const Layout = () => {
                 onChange={handleSearch}
                 placeholder="Поиск по объявлениям"
               />
-              <button className="btn btn-primary search-btn" onClick={handleSearchArray}>
+              <button
+                className="btn btn-primary search-btn"
+                onClick={handleSearchArray}
+              >
                 <img
                   className="search-btn__icon"
                   src="/image/search.svg"
@@ -42,10 +48,9 @@ export const Layout = () => {
                 <span className="search-btn__text">Найти</span>
               </button>
             </div>
-            {searchText}
           </div>
         </section>
-        <Outlet context={{products}}/>
+        <Outlet context={{ products }} />
       </main>
     </>
   );
