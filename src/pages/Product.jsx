@@ -1,32 +1,13 @@
-import { useParams } from "react-router-dom";
-import { Header } from "../components/Header/Header";
-import { cardArray } from "../constants";
+import {useOutletContext, useParams } from "react-router-dom";
+
 
 export const Product = () => {
+  const {products} = useOutletContext();
   const { id } = useParams();
-  const findProduct = cardArray.find((p) => p.id === +id);
+  const findProduct = products.find((p) => p.id === +id);
 
   return (
-    <>
-      <Header />
-
-      <main>
-        <section className="search">
-          <div className="container">
-            <div className="search-box">
-              <input type="text" placeholder="Поиск по объявлениям" />
-              <button className="btn btn-primary search-btn">
-                <img
-                  className="search-btn__icon"
-                  src="/image/search.svg"
-                  alt="search"
-                />
-                <span className="search-btn__text">Найти</span>
-              </button>
-            </div>
-          </div>
-        </section>
-        <section className="content">
+    <section className="content">
           <div className="container">
             {findProduct ? (
               <div className="content-box">
@@ -119,7 +100,5 @@ export const Product = () => {
             )}
           </div>
         </section>
-      </main>
-    </>
   );
 };
